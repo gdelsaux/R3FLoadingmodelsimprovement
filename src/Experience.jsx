@@ -32,5 +32,6 @@ export default function Experience()
             <meshStandardMaterial color="greenyellow" />
         </mesh>
 
+        <primitive object={model.nodes.Pencile_base001} />
     </>
 }
