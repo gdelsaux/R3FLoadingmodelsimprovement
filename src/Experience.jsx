@@ -26,7 +26,7 @@ export default function Experience()
                 <LoadingPlaceholder position={ {y: 0.5} } scale={ [2, 3, 2] } args={ [1, 1, 1, 2, 2, 2] } color={'red'} />
             }
         >
-            <Model path={'./FlightHelmet/glTF/FlightHelmet.gltf'} scale={ 5 } position={ {y: -1}} />
+            <Model path={'./hamburger.glb'} scale={ 0.35 } position={ {y: -1.15}} />
         </Suspense>
     </>
 }

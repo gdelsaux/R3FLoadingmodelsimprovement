@@ -1,6 +1,4 @@
-import {useLoader} from "@react-three/fiber";
-import {GLTFLoader} from "three/addons/loaders/GLTFLoader.js";
-import {DRACOLoader} from "three/addons/loaders/DRACOLoader.js";
+import { useGLTF } from '@react-three/drei';
 
 export default function Model({path, scale, position}) {
     /*
@@ -16,15 +14,7 @@ export default function Model({path, scale, position}) {
     /*
   ** Helmet model
    */
-    const model = useLoader(
-        GLTFLoader,
-        path,
-        (loader) => {
-            const dracoLoader = new DRACOLoader();
-            dracoLoader.setDecoderPath('./draco/');
-            loader.setDRACOLoader(dracoLoader);
-        }
-    );
+    const model = useGLTF(path);
 
     /*
     ** Pencil model
