@@ -1,23 +1,12 @@
-import { OrbitControls, useGLTF, useTexture } from '@react-three/drei';
+import { OrbitControls } from '@react-three/drei';
 import { Perf } from 'r3f-perf';
-import { useLoader } from '@react-three/fiber';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
-import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
+
+// Components
+import Model from '../public/components/Model.jsx';
+import {Suspense} from "react";
 
 export default function Experience()
 {
-    const model = useLoader(
-        GLTFLoader,
-        './pencilModel.glb',
-        (loader) => {
-            const dracoLoader = new DRACOLoader();
-            dracoLoader.setDecoderPath('./draco/');
-            loader.setDRACOLoader(dracoLoader);
-        }
-    );
-    // const model = useGLTF('./pencilModel.glb');
-    const bakedTexture = useTexture('./bakedPencil.jpg');
-    console.log(model);
     return <>
 
         <Perf position="top-left" />
@@ -31,7 +20,8 @@ export default function Experience()
             <planeGeometry />
             <meshStandardMaterial color="greenyellow" />
         </mesh>
-
-        <primitive object={model.nodes.Pencile_base001} />
+        <Suspense>
+            <Model path={'./FlightHelmet/glTF/FlightHelmet.gltf'} scale={ 5 } position={ {y: -1}} />
+        </Suspense>
     </>
 }
