@@ -1,6 +1,8 @@
 import { useGLTF } from '@react-three/drei';
 
+let filePath;
 export default function Model({path, scale, position}) {
+    filePath = path;
     /*
     ** Default value
     */
@@ -12,22 +14,9 @@ export default function Model({path, scale, position}) {
     }
 
     /*
-  ** Helmet model
-   */
+    ** Loader
+    */
     const model = useGLTF(path);
-
-    /*
-    ** Pencil model
-     */
-    // const model = useLoader(
-    //     GLTFLoader,
-    //     './pencilModel.glb',
-    //     (loader) => {
-    //         const dracoLoader = new DRACOLoader();
-    //         dracoLoader.setDecoderPath('./draco/');
-    //         loader.setDRACOLoader(dracoLoader);
-    //     }
-    // );
 
     /*
     ** future texture for pencil model
@@ -37,3 +26,5 @@ export default function Model({path, scale, position}) {
         <primitive object={ model.scene } scale={ modelScale } position-y={ modelPosition.y }/>
     </>
 }
+
+useGLTF.preload(filePath);
