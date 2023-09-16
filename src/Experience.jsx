@@ -3,8 +3,8 @@ import { Perf } from 'r3f-perf';
 import {Suspense} from 'react';
 
 // Components
-import Model from '../public/components/Model.jsx';
-import meshBasicNodeMaterial from "three/addons/nodes/materials/MeshBasicNodeMaterial.js";
+import Model from '../public/components/Model/Model.jsx';
+import LoadingPlaceholder from "../public/components/LoadingPlaceholder/LoadingPlaceholder.jsx";
 
 export default function Experience()
 {
@@ -23,10 +23,7 @@ export default function Experience()
         </mesh>
         <Suspense
             fallback={
-                <mesh position-y={ 0.5 } scale={ [2, 3, 2] }>
-                    <boxGeometry args={ [1, 1, 1, 2, 2, 2] } />
-                    <meshBasicMaterial wireframe color='red' />
-                </mesh>
+                <LoadingPlaceholder position={ {y: 0.5} } scale={ [2, 3, 2] } args={ [1, 1, 1, 2, 2, 2] } color={'red'} />
             }
         >
             <Model path={'./FlightHelmet/glTF/FlightHelmet.gltf'} scale={ 5 } position={ {y: -1}} />
